@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title class="ion-text-center">Inicio de Sesión COPROBICH</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<ion-item>
+  <ion-label>Email:</ion-label>
+  <ion-input type="text" placeholder="carlosCoprobich99@gmail.com" [(ngModel)]="user.email"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label>Contraseña:</ion-label>
+  <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+</ion-item>
+
+<ion-row class="top-20">
+    <ion-col>
+        <ion-button (click)="onLogin()" size="full" >
+            Loguearse
+          </ion-button>
+    </ion-col>
+    <ion-col>
+        <ion-button routerLink="/register" size="full">
+          Nuevo
+        </ion-button>
+    </ion-col>
+</ion-row>
+
+</ion-content>

@@ -1,0 +1,20 @@
+[
+    {
+      "academico": "PRIMARIA"
+    },
+    {
+      "academico": "SECUNDARIA"
+    },
+    {
+      "academico": "SUPERIOR"
+    },
+    {
+      "academico": "POSTGRADO"
+    },
+    {
+      "academico": "CUARTO NIVEL"
+    },
+    {
+      "academico": "NINGUNO"
+    }
+  ]

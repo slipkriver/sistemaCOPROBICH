@@ -1,0 +1,472 @@
+<app-header class="ion-text-center" titulo="FORMULARIO DE INGRESO"></app-header>
+
+<ion-content class="ion-padding">
+  
+  <ion-text color="primary">
+    <h2>DATOS GENERALES</h2>
+  </ion-text>
+  <form #formulario="ngForm" (ngSubmit)="onSubmitTemplate()">
+    <ion-item  class="inputi">
+      <ion-label position="floating">Cédula de identidad</ion-label>
+      <ion-input
+     
+        type="text"
+        name="cedulaProd"
+        [(ngModel)]="productor.prod_cedula"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Código de Productor</ion-label>
+      <ion-input
+        type="text"
+        name="password"
+        [(ngModel)]="productor.prod_codigo"
+        style="text-transform:uppercase;"
+        onkeyup="javascript:this.value=this.value.toUpperCase();"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nombres</ion-label>
+      <ion-input
+        type="text"
+        name="nombre"
+        [(ngModel)]="productor.prod_nombres"
+        style="text-transform:uppercase;"
+        onkeyup="javascript:this.value=this.value.toUpperCase();"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Apellido paterno</ion-label>
+      <ion-input
+        type="text"
+        name="apellidoPater"
+        [(ngModel)]="productor.prod_apellidop"
+        style="text-transform:uppercase;"
+        onkeyup="javascript:this.value=this.value.toUpperCase();"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Apellido materno</ion-label>
+      <ion-input
+        type="text"
+        name="apellidoMater"
+        [(ngModel)]="productor.prod_apellidom"
+        style="text-transform:uppercase;"
+        onkeyup="javascript:this.value=this.value.toUpperCase();"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-list-header>
+      <ion-label>Datos de nacimiento</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Fecha de Nacimiento</ion-label>
+      <ion-datetime
+        mode="ios"
+        placeholder="Nacimiento"
+        display-format="YYYY MMMM DD"
+        cancelText="Cancelar"
+        [(ngModel)]="productor.prod_fnacimiento"
+        [ngModelOptions]="{standalone: true}"
+        (ionChange)="cambioFecha( $event )"
+        required
+      ></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Teléfono</ion-label>
+      <ion-input
+        type="text"
+        name="telefonoProd1"
+        [(ngModel)]="productor.prod_tel1"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Teléfono 2 (Opcional)</ion-label>
+      <ion-input
+        type="text"
+        name="telefonoProd2"
+        [(ngModel)]="productor.prod_tel2"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input
+        type="email"
+        name="emailProd"
+        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+        [(ngModel)]="productor.prod_correo"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Género</ion-label>
+      <ion-select
+        mode="ios"
+        placeholder="Seleccione uno"
+        [(ngModel)]="productor.prod_genero"
+        [ngModelOptions]="{standalone: true}"
+      >
+        <ion-select-option
+          *ngFor="let check of genero | async"
+          (click)="onClick( check )"
+          required
+          >{{ check.genero }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Etnia / Nacionalidad</ion-label>
+      <ion-select
+        mode="ios"
+        placeholder="Seleccione uno"
+        [(ngModel)]="productor.prod_etnia"
+        [ngModelOptions]="{standalone: true}"
+      >
+        <ion-select-option
+          *ngFor="let check of etnia | async"
+          (click)="onClick( check )"
+          required
+          >{{ check.etnia }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Nivel Académico</ion-label>
+      <ion-select
+        mode="ios"
+        placeholder="Seleccione uno"
+        [(ngModel)]="productor.prod_instruccion"
+        [ngModelOptions]="{standalone: true}"
+      >
+        <ion-select-option
+          *ngFor="let check of academico | async"
+          (click)="onClick( check )"
+          required
+          >{{ check.academico }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-radio-group
+        [(ngModel)]="productor.prod_discapacidad"
+        [ngModelOptions]="{standalone: true}"
+      >
+        <ion-list-header>
+          <ion-label>Posee discapacidad</ion-label>
+        </ion-list-header>
+        <ion-item
+          *ngFor="let check of discapacidad | async"
+          (click)="onClick( check )"
+        >
+          <ion-label> {{check.discapacidad}} </ion-label>
+          <ion-radio slot="start" mode=""></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-item>
+
+    <ion-item *ngIf="productor.prod_discapacidad !== 'ion-rb-0'">
+      <ion-label position="floating">Nombre de la discapacidad</ion-label>
+      <ion-input
+        type="text"
+        name="nombreDiscapacidad"
+        [(ngModel)]="productor.prod_ndiscapacidad"
+        style="text-transform:uppercase;"
+        onkeyup="javascript:this.value=this.value.toUpperCase();"
+        
+      ></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="productor.prod_discapacidad !== 'ion-rb-0'">
+      <ion-label position="floating">Porcentaje de la discapacidad</ion-label>
+      <ion-input
+        type="text"
+        name="porcentajeDiscapacidad"
+        [(ngModel)]="productor.prod_pdiscapacidad"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Foto del productor</ion-label>
+      <ion-input
+        type="text"
+        name="imagenProd"
+        [(ngModel)]="productor.prod_imagen"
+      ></ion-input>
+    </ion-item>
+
+    <ion-text color="primary">
+      <h2>DATOS DE UBICACIÓN</h2>
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">País de origen</ion-label>
+      <ion-input
+        type="text"
+        name="paisProd"
+        [(ngModel)]="productor.prod_pais"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Provincia de origen</ion-label>
+      <ion-input
+        type="text"
+        name="provinciaProd"
+        [(ngModel)]="productor.prod_provincia"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Cantón de origen</ion-label>
+      <ion-input
+        type="text"
+        name="cantonProd"
+        [(ngModel)]="productor.prod_canton"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Parroquia de origen</ion-label>
+      <ion-input
+        type="text"
+        name="parroquiaProd"
+        [(ngModel)]="productor.prod_parroquia"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Comunidad de origen</ion-label>
+      <ion-input
+        type="text"
+        name="comunidadProd"
+        [(ngModel)]="productor.prod_comunidad"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Dirección de domicilio</ion-label>
+      <ion-input
+        type="text"
+        name="domicilioProd"
+        [(ngModel)]="productor.prod_direccion"
+        style="text-transform:uppercase;"
+        onkeyup="javascript:this.value=this.value.toUpperCase();"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Lugar de referencia</ion-label>
+      <ion-input
+        type="text"
+        name="referenciaProd"
+        [(ngModel)]="productor.prod_referencia"
+        style="text-transform:uppercase;"
+        onkeyup="javascript:this.value=this.value.toUpperCase();"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-text color="primary">
+      <h2>DATOS DE SITUACIÓN</h2>
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating"
+        >Inicio de actividades en la empresa</ion-label
+      >
+      <ion-input
+        type="text"
+        name="actividadProd"
+        [(ngModel)]="productor.prod_finicio"
+        style="text-transform:uppercase;"
+        onkeyup="javascript:this.value=this.value.toUpperCase();"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Principal fuente de ingresos</ion-label>
+      <ion-input
+        type="text"
+        name="fuenteProd"
+        [(ngModel)]="productor.prod_fingreso"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Principal actividad económica</ion-label>
+      <ion-input
+        type="text"
+        name="actividadecProd"
+        [(ngModel)]="productor.prod_actividad"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nombre de la empresa</ion-label>
+      <ion-input
+        type="text"
+        name="empresaProd"
+        [(ngModel)]="productor.prod_establecimiento"
+        style="text-transform:uppercase;"
+        onkeyup="javascript:this.value=this.value.toUpperCase();"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Trabaja como productor propio</ion-label>
+      <ion-input
+        type="text"
+        name="trabajaProd"
+        [(ngModel)]="productor.prod_tproductor"
+        style="text-transform:uppercase;"
+        onkeyup="javascript:this.value=this.value.toUpperCase();"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating"
+        >Horas semanales de trabajo en el campo</ion-label
+      >
+      <ion-input
+        type="text"
+        name="horasProd"
+        [(ngModel)]="productor.prod_horast"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Número de cargas familiares</ion-label>
+      <ion-input
+        type="text"
+        name="cargasfProd"
+        [(ngModel)]="productor.prod_cargas"
+      ></ion-input>
+    </ion-item>
+
+    <ion-text color="primary">
+      <h2>DATOS DE SERVICIOS</h2>
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">De que forma obtine el agua</ion-label>
+      <ion-input
+        type="text"
+        name="aguaProd"
+        [(ngModel)]="productor.prod_agua"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Servicio de alcantarillado</ion-label>
+      <ion-input
+        type="text"
+        name="alcantarilladoProd"
+        [(ngModel)]="productor.prod_alcantarillado"
+        style="text-transform:uppercase;"
+        onkeyup="javascript:this.value=this.value.toUpperCase();"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Servicio de alumbrado público</ion-label>
+      <ion-input
+        type="text"
+        name="alumbradoProd"
+        [(ngModel)]="productor.prod_alumbrado"
+        style="text-transform:uppercase;"
+        onkeyup="javascript:this.value=this.value.toUpperCase();"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Cómo optimizar la energía eléctrica</ion-label>
+      <ion-input
+        type="text"
+        name="energiaProd"
+        [(ngModel)]="productor.prod_energia"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Posee servicio de internet</ion-label>
+      <ion-input
+        type="text"
+        name="internetProd"
+        [(ngModel)]="productor.prod_internet"
+        style="text-transform:uppercase;"
+        onkeyup="javascript:this.value=this.value.toUpperCase();"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Tipos de servicios telefónicos</ion-label>
+      <ion-input
+        type="text"
+        name="serviciostelProd"
+        [(ngModel)]="productor.prod_telefono"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Posee transporte público</ion-label>
+      <ion-input
+        type="text"
+        name="transportepubProd"
+        [(ngModel)]="productor.prod_transporte"
+        style="text-transform:uppercase;"
+        onkeyup="javascript:this.value=this.value.toUpperCase();"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-row class="top-20">
+      <ion-col>
+        <ion-button type="submit" expand="full" [disabled]="formulario.invalid">
+          Enviar
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full" routerLink="/" color="danger">
+          Cancelar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
+<app-footer></app-footer>

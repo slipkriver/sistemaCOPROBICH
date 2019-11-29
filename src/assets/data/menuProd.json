@@ -1,0 +1,12 @@
+[
+    {
+      "icon": "add",
+      "name": "Productor",
+      "redirectTo": "/ingreso-prod"
+    },  
+    {
+        "icon": "map",
+        "name": "Lotes",
+        "redirectTo": "/"
+      }
+  ]

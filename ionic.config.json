@@ -1,0 +1,7 @@
+{
+  "name": "sistemaCOPROBICH",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

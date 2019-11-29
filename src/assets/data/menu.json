@@ -1,0 +1,12 @@
+[
+  {
+    "icon": "flame",
+    "name": "Inicio",
+    "redirectTo": "/"
+  },  
+  {
+      "icon": "person-add",
+      "name": "Productores",
+      "redirectTo": "/menu-prod"
+    }
+]
