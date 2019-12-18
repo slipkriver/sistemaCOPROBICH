@@ -8,6 +8,10 @@ import { IonicModule } from '@ionic/angular';
 import { InicioPage } from './inicio.page';
 import { ComponentsModule } from '../../components/components.module';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { AppMaterialModule } from '../../app-material.module';
+
 const routes: Routes= [
   {
     path: '',
@@ -17,11 +21,13 @@ const routes: Routes= [
 
 @NgModule({
   imports: [
+    ReactiveFormsModule,
     CommonModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    ComponentsModule
+    ComponentsModule,
+    AppMaterialModule
   ],
   declarations: [InicioPage]
 })

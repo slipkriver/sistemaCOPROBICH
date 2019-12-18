@@ -32,4 +32,8 @@ export class DataService {
   getDiscProd(){
     return this.http.get('/assets/data/productores/discapacidad.json');
   }
+
+  getUsers() {
+    return this.http.get('/assets/data/user.json');
+  }
 }

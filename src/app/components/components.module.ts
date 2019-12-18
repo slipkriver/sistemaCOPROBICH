@@ -6,13 +6,11 @@ import { RouterModule } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 
-
-
 @NgModule({
   declarations: [
     HeaderComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -22,7 +20,7 @@ import { FooterComponent } from './footer/footer.component';
   exports: [
     HeaderComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
   ]
 })
 export class ComponentsModule { }

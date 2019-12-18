@@ -15,32 +15,16 @@ export class AuthService {
       this.isLogged = user;
     });
 
-   }
+  }
 
   //  Login
-async onLogin( user: User ){
-  try{
-    return await this.afAuth.auth.signInWithEmailAndPassword(
-      user.email,
-      user.password
-    );
-  } catch (error){
-    console.log('Error en loguearse', error);
-  }
+onLogin( user: User ){
+return new Promise((resolve, rejected) =>{
+  this.afAuth.auth.signInWithEmailAndPassword( user.email, user.password)
+  .then( user => {
+    console.log(user);
+    resolve(user);
+  }).catch( err => rejected(err));
+})
 }
-
-// Registro
-
-async onRegister( user: User ){
-  try{
-    return await this.afAuth.auth.createUserWithEmailAndPassword(
-      user.email,
-      user.password
-    );
-
-  } catch (error){
-console.log('Error en registrase v:');
-  }
-}
-
 }

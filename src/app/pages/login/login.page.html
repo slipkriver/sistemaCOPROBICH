@@ -4,28 +4,36 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-<ion-item>
-  <ion-label>Email:</ion-label>
-  <ion-input type="text" placeholder="carlosCoprobich99@gmail.com" [(ngModel)]="user.email"></ion-input>
-</ion-item>
-
-<ion-item>
-  <ion-label>Contraseña:</ion-label>
-  <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-</ion-item>
-
-<ion-row class="top-20">
-    <ion-col>
-        <ion-button (click)="onLogin()" size="full" >
-            Loguearse
-          </ion-button>
+<ion-content text-center>
+  <ion-grid class="ion-padding" size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12">
+    <ion-row class="">
+      <ion-col >
+        <form class="ion-padding">
+          <ion-row >
+            <ion-col>
+              <h1><strong>COPROBICH</strong></h1>
+              <h2><small>Inicio de Sesión</small> </h2> 
+              <img src="assets/icon/favicon.png" alt="logo">
+        </ion-col>
+        <ion-col>
+            <br><br><br>
+            <ion-item id="rounded" class="itm">
+              <ion-input type="text" placeholder="carlos_Benitez88@coprobich.com" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}"></ion-input>
+            </ion-item>
+            <ion-item id="rounded" class="itm">
+              <ion-input type="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}"></ion-input>
+            </ion-item>
+            <ion-buttons class="login">
+                <ion-button (click)="onLogin()">Loguearse</ion-button>
+            </ion-buttons>
+          </ion-col>
+      </ion-row>
+      <ion-row>
+       
+        </ion-row>
+      </form>
     </ion-col>
-    <ion-col>
-        <ion-button routerLink="/register" size="full">
-          Nuevo
-        </ion-button>
-    </ion-col>
-</ion-row>
-
+  </ion-row>
+</ion-grid>
 </ion-content>
+                                         

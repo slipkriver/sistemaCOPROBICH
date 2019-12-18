@@ -12,29 +12,35 @@ import { MenuController, NavController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   user: User = new User();
+  cote: string = '';
+
+
   constructor( private router: Router,
                private authSvc: AuthService,
                public navCtrl: NavController,
-               public menu : MenuController) 
+               public menu: MenuController) 
                { 
                 this.menu.enable(false);
-                this.menu.swipeEnable(false);
+                this.menu.swipeGesture(false);
                }
 
   ngOnInit() {
   }
 
-  async onLogin(){
-    const user = await this.authSvc.onLogin(this.user);
-    if(user){
+  onLogin(){
+    this.authSvc.onLogin(this.user).then( res => {
       console.log('Bienvenido: ', this.user.email);
-      this.router.navigateByUrl('/');
-    }
+      this.cote = this.user.email;
+      this.router.navigate(['/inicio']);
+    }).catch( err => alert('Los datos ingresados no son correctos :v'));
+  }
+
+  ionViewDidLoad(){
+    this.menu.enable(false);
   }
 
   ionViewWillLeave(){
     this.menu.enable(true);
-    this.menu.swipeEnable(true);
+    this.menu.swipeGesture(true);
     }
-
 }

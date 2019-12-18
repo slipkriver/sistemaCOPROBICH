@@ -135,3 +135,19 @@
     animation-name: fadeOut;
   }
   
+  ion-content {
+    --background: url(/assets/img/bd565dcc0a556add0b0a0ed6b26d686e.gif) no-repeat center/cover fixed;
+    font-family: 'Montserrat', sans-serif;
+
+  }
+
+  .transparente {
+    --background: rgba(0,0,0,0);
+    --border-color: rgba(0,0,0,0);
+  }
+
+  .no-transparente{
+    --background: rgba(255, 255, 255, 0.842);
+    --border-color: rgba(189, 6, 6, 0.596);
+  }
+@import "~@mobiscroll/angular/dist/css/mobiscroll.scss";

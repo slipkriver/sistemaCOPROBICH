@@ -10,19 +10,19 @@ import { User } from '../../shared/user.class';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
-  @Input() titulo: string;
   user: User = new User();
   // var: any = [];
 
   constructor( private authSvc: AuthService, private router: Router, private afAuth: AngularFireAuth ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.authSvc.onLogin(this.user);
+    // console.log(this.user);
+  }
 
   onLogout(){
     console.log('Cerrar Sesión');
-    console.log(this.user.email);
     this.afAuth.auth.signOut();
     this.router.navigateByUrl('/login');
   }
-
 }

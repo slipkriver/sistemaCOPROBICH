@@ -1,14 +1,30 @@
 <ion-footer class="avatar animated fadeIn">
-  <ion-toolbar color="primary">
-    <ion-buttons slot="end">
-      <ion-icon name="contact" slot="icon-only"mode="ios"></ion-icon>
-    </ion-buttons>
-    <ion-title >{{ titulo }}</ion-title>
-    <ion-buttons slot="start">
-      <ion-button (click)="onLogout()">
-        <ion-icon slot="start" name="contact"></ion-icon>
-        Cerrar Sesión 
-      </ion-button>
-    </ion-buttons>
+  <ion-toolbar>
+    <!-- <ion-title> <small> <h6> {{ user }} </h6></small>   </ion-title> -->
+    <ion-item color="primary" class="toolbar-text">
+      <span class="label-text"
+        ><small
+          ><h5>{{ user }}</h5></small
+        ></span>
+      <span class="label-text1"
+        ><small> {{ user }}</small></span>
+      <ion-avatar slot="start">
+        <img src="/assets/stan-lee.jpg" />
+      </ion-avatar>
+      <ion-avatar class="avatar-img" slot="end">
+        <img src="assets/icon/logout.png" />
+      </ion-avatar>
+
+      <!-- <ion-chip class="chip-edit" color="light" slot="end">
+        <ion-avatar>
+          <img src="/assets/stan-lee.jpg" />
+        </ion-avatar>
+
+        <ion-label
+          ><small> {{ user }} </small></ion-label
+        >
+      </ion-chip> -->
+
+    </ion-item>
   </ion-toolbar>
 </ion-footer>

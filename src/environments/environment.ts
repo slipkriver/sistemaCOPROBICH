@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyDrIf-68ORATdNrIliJIh4Bg8Zd6Kk0ctc",
-    authDomain: "loginioniccoprobich.firebaseapp.com",
-    databaseURL: "https://loginioniccoprobich.firebaseio.com",
-    projectId: "loginioniccoprobich",
-    storageBucket: "loginioniccoprobich.appspot.com",
-    messagingSenderId: "59234741495",
-    appId: "1:59234741495:web:e8ef61024524ddf0f5f7f2",
-    measurementId: "G-2HL3R68PN7"
+    apiKey: "AIzaSyCl_WDLqQZJR4t_1SPvSPn7SMyr4Jw5XBs",
+    authDomain: "coprobich-app.firebaseapp.com",
+    databaseURL: "https://coprobich-app.firebaseio.com",
+    projectId: "coprobich-app",
+    storageBucket: "coprobich-app.appspot.com",
+    messagingSenderId: "423198220040",
+    appId: "1:423198220040:web:e8295a7cca4ee760a796bd"
+    // measurementId: "G-2HL3R68PN7"
   }
 };
 

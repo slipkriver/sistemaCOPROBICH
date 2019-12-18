@@ -5,20 +5,159 @@
 </ion-header>
 
 <ion-content class="background">
+  <ion-grid fixed>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">{{element.position}}</td>
+      </ng-container>
 
-  <!-- <ion-list >
-    <ion-list-header>
-      <ion-label>Resources</ion-label>
-    </ion-list-header>
-    <ion-item color="success" href="https://ionicframework.com/docs/">
-      <ion-icon slot="start" color="dark" name="book"></ion-icon>
-      <ion-label color="dark">Ionic Documentation</ion-label>
-    </ion-item>
-    <ion-item color="success" href="https://ionicframework.com/docs/building/scaffolding">
-      <ion-icon slot="start" color="dark" name="build"></ion-icon>
-      <ion-label color="dark">Scaffold Out Your App</ion-label>
-    </ion-item>
-  </ion-list> -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+      </ng-container>
 
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef>Weight</th>
+        <td mat-cell *matCellDef="let element">{{element.weight}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef>Symbol</th>
+        <td mat-cell *matCellDef="let element">{{element.symbol}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date" />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="picker"
+      cancelText="Cancelar!!!"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+
+    <input matInput [matDatepicker]="picker1" placeholder="Choose a date" />
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker
+      #picker1
+      startView="year"
+      [startAt]="startDate"></mat-datepicker>
+
+    <input
+      matInput
+      [min]="minDate"
+      [max]="maxDate"
+      [matDatepicker]="picker2"
+      placeholder="Choose a date"/>
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+
+    <input
+      matInput
+      [matDatepickerFilter]="myFilter"
+      [matDatepicker]="picker3"
+      placeholder="Choose a date"/>
+    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+    <mat-datepicker #picker3></mat-datepicker>
+
+    <input
+      matInput
+      [matDatepicker]="picker4"
+      placeholder="Seleccione una fecha"
+     (dateInput)="addEvent('input', $event)" 
+     (dateChange)="addEvent('change', $event)"
+     display-format="DD MMMM YYYY"/>
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="picker4"></mat-datepicker-toggle>
+    <mat-datepicker display-format="DD MMMM YYYY" touchUi #picker4></mat-datepicker>
+    <div class="example-events">
+        <div *ngFor="let e of events">{{e | date: 'dd/MM/yyyy'}}</div>
+      </div>
+    <!-- <ion-card mode="ios" color="light" *ngFor="let user of usuarios | async">
+      <ion-card-header>
+        <ion-card-subtitle>{{ user.name }}</ion-card-subtitle>
+        <ion-card-title>Codigo: {{ user.address.zipcode }} </ion-card-title>
+      </ion-card-header>
+      <ion-item color="light">
+        <ion-icon color="dark" slot="start" name="pin"></ion-icon>
+        <ion-label>Inspector</ion-label>
+      </ion-item>
+      <ion-card-content>
+        <small>Latitud</small>
+        {{ user.address.geo.lat }}
+      </ion-card-content>
+      <ion-card-content>
+        <small>Longitud</small>
+        {{ user.address.geo.lng }}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-item class="transparente" *ngFor="let user of usuarios | async">
+      <div class="accordion">
+        <ul>
+          <li>
+            <a class="acc-handle" tabindex="0"> {{ user.name }} </a>
+            <div class="acc-panel">
+              <ion-card
+                mode="ios"
+                color="light"
+                *ngFor="let user of usuarios | async"
+              >
+                <ion-card-header>
+                  <ion-card-subtitle>{{ user.name }}</ion-card-subtitle>
+                  <ion-card-title
+                    >Codigo: {{ user.address.zipcode }}
+                  </ion-card-title>
+                </ion-card-header>
+                <ion-item color="light">
+                  <ion-icon color="dark" slot="start" name="pin"></ion-icon>
+                  <ion-label>Inspector</ion-label>
+                </ion-item>
+                <ion-card-content>
+                  <small>Latitud</small>
+                  {{ user.address.geo.lat }}
+                </ion-card-content>
+                <ion-card-content>
+                  <small>Longitud</small>
+                  {{ user.address.geo.lng }}
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </ion-item> -->
+  </ion-grid>
+
+  <!-- <ion-item class="transparente">
+      <ion-img slot="start" src="assets\icon\favicon.png" ></ion-img>
+      <ion-card-header>
+          <ion-card-subtitle>Lote</ion-card-subtitle>
+          <ion-card-title>00012 - Calpi - Riobamba - Jhonny Guaña</ion-card-title>
+        </ion-card-header>
+      </ion-item>
+    <ion-card-content>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi iusto obcaecati cupiditate aperiam blanditiis minima voluptatem dolore modi dignissimos, ab odio fugit vitae harum? Quidem, necessitatibus. Repellendus amet quo cupiditate.
+    </ion-card-content>
+
+<ion-item class="transparente">
+    <ion-img slot="start" src="assets\icon\favicon.png" ></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>Inspector</ion-card-subtitle>
+      <ion-card-title>001220 - Riobamba - Jhonny Guaña </ion-card-title> 
+    </ion-card-header>
+</ion-item>
+    <ion-card-content>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi iusto obcaecati cupiditate aperiam blanditiis minima voluptatem dolore modi dignissimos, ab odio fugit vitae harum? Quidem, necessitatibus. Repellendus amet quo cupiditate.
+    </ion-card-content> -->
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="click($event)">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
-<app-footer></app-footer>

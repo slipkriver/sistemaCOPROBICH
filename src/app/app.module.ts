@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,6 +26,7 @@ import { environment } from '../environments/environment';
             HttpClientModule,
             AngularFireModule.initializeApp(environment.firebaseConfig),
             AngularFireAuthModule,
+            BrowserAnimationsModule,
           ],
   providers: [
     StatusBar,

@@ -19,6 +19,9 @@ export class AppComponent {
   valor: any = '';
   user: User = new User();
   componentes: Observable<Componente[]>;
+  // dateString = "22-04-2017"; //whatever date string u have
+  // dateObject = moment(this.dateString, "DD-MM-YYYY").toDate();
+
 
   constructor(
     private platform: Platform,
@@ -39,11 +42,11 @@ export class AppComponent {
     });
   }
 
-  async onLogin(){
-    const user = await this.authSvc.onLogin(this.user);
-    if(user){
-      this.valor = this.user.email;
-      console.log(user);
-    }
-  }
+  // async onLogin(){
+  //   const user = await this.authSvc.onLogin(this.user);
+  //   if(user){
+  //     this.valor = this.user.email;
+  //     console.log(user);
+  //   }
+  // }
 }
