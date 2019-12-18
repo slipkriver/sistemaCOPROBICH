@@ -82,7 +82,19 @@
         required
       ></ion-datetime>
     </ion-item>
-
+    <input
+    matInput [matDatepicker]="picker4"
+    placeholder="Seleccione una fecha"
+   (dateInput)="addEvent('input', $event)" 
+   (dateChange)="addEvent('change', $event)"
+   display-format="DD MMMM YYYY"/>
+  <mat-datepicker-toggle
+    matSuffix
+    [for]="picker4"></mat-datepicker-toggle>
+  <mat-datepicker display-format="DD MMMM YYYY" touchUi #picker4></mat-datepicker>
+  <div class="example-events">
+      <div *ngFor="let e of events">{{e | date: 'dd/MM/yyyy'}}</div>
+    </div>
     <ion-item>
       <ion-label position="floating">Teléfono</ion-label>
       <ion-input

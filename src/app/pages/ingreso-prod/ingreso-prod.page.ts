@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Observable } from 'rxjs';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-ingreso-prod',
@@ -15,6 +16,7 @@ genero: Observable<any>;
 academico: Observable<any>;
 discapacidad: Observable<any>;
 check: any;
+events: string[] = [];
 
   productor = {
     prod_actividad: '',
@@ -79,5 +81,17 @@ check: any;
   }
   onClick( check ) {
     // console.log(check);
+  }
+
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    // event = moment(this.event, "DD-MM-YY").toDate();
+    console.log(event.value);
+    this.events.push(`${type}: ${event.value}`); 
+  }
+
+  myFilter = (d: Date): boolean => {
+    const day = d.getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
   }
 }

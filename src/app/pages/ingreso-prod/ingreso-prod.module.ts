@@ -8,6 +8,7 @@ import { IngresoProdPageRoutingModule } from './ingreso-prod-routing.module';
 
 import { IngresoProdPage } from './ingreso-prod.page';
 import { ComponentsModule } from '../../components/components.module';
+import { AppMaterialModule } from '../../app-material.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ComponentsModule } from '../../components/components.module';
     FormsModule,
     IonicModule,
     IngresoProdPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    AppMaterialModule
   ],
   declarations: [IngresoProdPage]
 })
