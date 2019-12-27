@@ -83,6 +83,8 @@ events: string[] = [];
     // console.log(check);
   }
 
+  
+
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     // event = moment(this.event, "DD-MM-YY").toDate();
     console.log(event.value);
